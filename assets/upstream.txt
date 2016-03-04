@@ -1,0 +1,20 @@
+Project: Color Scheme Generator
+Date: 160304
+Author: jackrzhang
+
+PROBLEM DEFINITION / USER INTERFACE:
+1) User (selects method of input, and) inputs any seed color of their choice.
+    a) Color Picker
+    b) Hex
+    c) RGB-HSV
+2) User selects a color scheme theme.
+3) Color Scheme Theme is generated and displayed, based on the seed color. 
+    a) Anywhere from 2-5 color tiles will be displayed.
+    b) Each color tile will show:
+        - The color itself
+        - Hex code
+4) User has option to download the palette through a generated PDF.
+
+IMPLEMENTATION DETAILS:
+1) Intuitive, non-overwhelming UI
+2) Responsive design - utilize Pure.css grids
