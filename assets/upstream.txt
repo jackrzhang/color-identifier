@@ -1,20 +1,29 @@
-Project: Color Scheme Generator
+Project: Color Identifier
 Date: 160304
 Author: jackrzhang
 
-PROBLEM DEFINITION / USER INTERFACE:
-1) User (selects method of input, and) inputs any seed color of their choice.
-    a) Color Picker
-    b) Hex
-    c) RGB-HSV
-2) User selects a color scheme theme.
-3) Color Scheme Theme is generated and displayed, based on the seed color. 
-    a) Anywhere from 2-5 color tiles will be displayed.
-    b) Each color tile will show:
-        - The color itself
-        - Hex code
-4) User has option to download the palette through a generated PDF.
+PROBLEM DEFINITION:
+1) Identify a color within any (digital) picture. 
+
+USER INTERFACE FLOW:
+1) User is prompted to upload a picture.
+    a) Display message instead if HTML5 is not supported.
+2) Picture is loaded in, and user moves a marker on the picture to the select a color.
+    a) Visual display of color is shown
+3) User submits, and color information appears. 
+    a) Information displayed includes:
+        - Hex
+        - RGB-HSV
+        - CYMK
+        - PMS
+        - Copic
+4) User has final options available to:
+    a) Restart the UI flow
+    b) Select another color from the uploaded image.
+
 
 IMPLEMENTATION DETAILS:
-1) Intuitive, non-overwhelming UI
-2) Responsive design - utilize Pure.css grids
+1) Simple, step-by-step UI
+2) Desktop only design, as browsers do not support mobile uploads
+3) Utilize Pure.css grids
+4) HTML5

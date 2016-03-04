@@ -2,56 +2,67 @@ User-agent: Applebot
 Disallow: /images/
 Disallow: /css/
 Disallow: /js/
+Disallow: /fonts/
 
 User-agent: baiduspider
 Disallow: /images/
 Disallow: /css/
 Disallow: /js/
+Disallow: /fonts/
 
 User-agent: Bingbot
 Disallow: /images/
 Disallow: /css/
 Disallow: /js/
+Disallow: /fonts/
 
 User-agent: Googlebot
 Disallow: /images/
 Disallow: /css/
 Disallow: /js/
+Disallow: /fonts/
 
 User-agent: msnbot
 Disallow: /images/
 Disallow: /css/
 Disallow: /js/
+Disallow: /fonts/
 
 User-agent: Naverbot
 Disallow: /images/
 Disallow: /css/
 Disallow: /js/
+Disallow: /fonts/
 
 User-agent: seznambot
 Disallow: /images/
 Disallow: /css/
 Disallow: /js/
+Disallow: /fonts/
 
 User-agent: Slurp
 Disallow: /images/
 Disallow: /css/
 Disallow: /js/
+Disallow: /fonts/
 
 User-agent: teoma
 Disallow: /images/
 Disallow: /css/
 Disallow: /js/
+Disallow: /fonts/
 
 User-agent: Yandex
 Disallow: /images/
 Disallow: /css/
 Disallow: /js/
+Disallow: /fonts/
 
 User-agent: Yeti
 Disallow: /images/
 Disallow: /css/
 Disallow: /js/
+Disallow: /fonts/
 
 User-agent: *
 Disallow: /

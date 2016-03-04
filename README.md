@@ -1,1 +1,1 @@
-# color-scheme-generator
+# color-identifier
