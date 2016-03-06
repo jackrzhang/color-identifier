@@ -8,7 +8,6 @@ $(document).ready(function() {
 function loadImageUrl() {
     $("#load-image").on('click', function(){
         $("#selected-image").attr("src", $("#url-input").val());
-        console.log($("#url-input").val());
     });
 }
 
@@ -28,6 +27,8 @@ function loadImageFile() {
         if (file) {
             reader.readAsDataURL(file);
         }
+    } else {
+        console.log('Javascript File API not supported.');
     }
 }
 
@@ -35,10 +36,13 @@ function continueToSelectColor() {
     $('#selected-image').on({
         load: function(){
             console.log("Continue to the select color view.");
+
         },
         error: function(){
-            console.log("Invalid image url.");
-            $('p.url-input-error').css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1}, 'slow');
+            if ($("#url-input").val() !== '') {
+                console.log("Invalid image url.");
+                $('p.url-input-error').css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1}, 'slow');
+            }
         }
     })
 }
