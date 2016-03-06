@@ -3,7 +3,7 @@ Date: 160304
 Author: jackrzhang
 
 PROBLEM DEFINITION:
-1) Identify a color within any (digital) picture. 
+1) Identify a color within any digital picture. 
 
 USER INTERFACE FLOW:
 1) User is prompted to upload a picture.
