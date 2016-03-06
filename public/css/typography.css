@@ -1,8 +1,10 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,600);
+
 h1 { 
     color: #4a4467; 
     font-family: 'Raleway',sans-serif; 
     font-size: 50px; 
-    font-weight: 700; 
+    font-weight: 600; 
     line-height: 72px; margin: 0 0 24px; 
     text-align: center; 
 }
@@ -11,17 +13,15 @@ h2 {
     color: #4a4467; 
     font-family: 'Raleway',sans-serif; 
     font-size: 30px; 
-    font-weight: 800; 
+    font-weight: 600; 
     line-height: 36px; 
     margin: 0 0 24px; text-align: center; 
 }
 
 p { 
     font-family: 'Raleway',sans-serif; 
-    font-size: 18px; 
+    font-size: 16px; 
     font-weight: 500; 
-    line-height: 32px; 
-    margin: 0 0 24px; 
 }
 
 a { 
@@ -32,3 +32,8 @@ a:hover {
     text-decoration: underline; 
 }
 
+input {
+    font-family: 'Raleway',sans-serif; 
+    font-size: 12px; 
+    font-weight: 400; 
+}

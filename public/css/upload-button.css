@@ -1,6 +1,16 @@
 .upload-button {
     position: relative;
-    margin: 0 auto;
+    background-color: #6184DB;
+    color: #fff;
+    padding: 15px 35px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    transition: all .2s ease-in-out;
+    text-align: left;
+}
+
+.upload-button:hover {
+    background-color: #4a4467;
 }
 
 .upload-input {
@@ -13,4 +23,5 @@
     font-size: 20px;
     opacity: 0;
     filter: alpha(opacity=0);
+    display: hidden;
 }
