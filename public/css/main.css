@@ -1,21 +1,25 @@
-@import url("loader.css");
-@import url("typography.css");
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300,500);
+@import url("typography.css");
 
-/*
-@font-face {
-    font-family: "Raleway";
-    src: url(../fonts/) format("truetype");
-}
-*/
+@import url("loader.css");
+@import url("upload-button.css");
 
 body {
-    color: #4a4467;
-    background: #f4f4f4;
+    background: #fff;
 }
 
 h1.title {
     padding-top: 5%;
+}
+
+div.view {
+    text-align: center;
+    display: none;
+}
+
+#upload {
+    display: block;
+    padding-top: 10%;
 }
 
 #loading {
