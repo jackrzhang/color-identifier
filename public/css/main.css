@@ -1,0 +1,23 @@
+@import url("loader.css");
+@import url("typography.css");
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,500);
+
+/*
+@font-face {
+    font-family: "Raleway";
+    src: url(../fonts/) format("truetype");
+}
+*/
+
+body {
+    color: #4a4467;
+    background: #f4f4f4;
+}
+
+h1.title {
+    padding-top: 5%;
+}
+
+#loading {
+    padding-top: 5%;
+}
