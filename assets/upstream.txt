@@ -6,7 +6,7 @@ PROBLEM DEFINITION:
 1) Identify a color within any digital picture. 
 
 USER INTERFACE FLOW:
-1) User is prompted to upload a picture.
+1) User is prompted to select a picture, either through file input or URL.
     a) Display message instead if HTML5 is not supported.
 2) Picture is loaded in, and user moves a marker on the picture to the select a color.
     a) Visual display of color is shown

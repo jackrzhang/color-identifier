@@ -33,27 +33,42 @@
 <body>
     <h1 class="title">Color Identifier</h1>
 
-    <div id="upload" class="view">
-        <div class="pure-button upload-button">
-            <p>Upload an image</p>
-            <input type="file" class="upload-input"/>
+    <div id="input-view" class="view">
+        <div class="pure-button input-button">
+            <span>Select an image</span>
+            <i class="fa fa-picture-o"></i>
+            <input type="file" accept="image/*" id="image-input">
+        </div>
+        <p class="or">OR</p>
+        <div class="url-input-container">
+            <input type="text" placeholder="ENTER AN IMAGE URL" id="url-input">
+        </div>
+        <div class="pure-button input-button" id="load-image">
+            <span>OK</span>
+        </div>
+        <div>
+            <p class="url-input-error">Please enter a valid image url.</p>
         </div>
     </div>
 
-    <div id="loading" class="view">
+    <div id="select-color-view" class="view">
+        <img id="selected-image" src="http://www.asdf.com/89asdf.gif" alt="selected image"/>
+    </div>
+
+    <div id="loading-view" class="view">
         <div class="sk-circle">
-          <div class="sk-circle1 sk-child"></div>
-          <div class="sk-circle2 sk-child"></div>
-          <div class="sk-circle3 sk-child"></div>
-          <div class="sk-circle4 sk-child"></div>
-          <div class="sk-circle5 sk-child"></div>
-          <div class="sk-circle6 sk-child"></div>
-          <div class="sk-circle7 sk-child"></div>
-          <div class="sk-circle8 sk-child"></div>
-          <div class="sk-circle9 sk-child"></div>
-          <div class="sk-circle10 sk-child"></div>
-          <div class="sk-circle11 sk-child"></div>
-          <div class="sk-circle12 sk-child"></div>
+            <div class="sk-circle1 sk-child"></div>
+            <div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div>
+            <div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div>
+            <div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div>
+            <div class="sk-circle8 sk-child"></div>
+            <div class="sk-circle9 sk-child"></div>
+            <div class="sk-circle10 sk-child"></div>
+            <div class="sk-circle11 sk-child"></div>
+            <div class="sk-circle12 sk-child"></div>
         </div>
     </div>
 

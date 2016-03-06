@@ -1,8 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,500);
 @import url("typography.css");
-
 @import url("loader.css");
-@import url("upload-button.css");
+@import url("input-fields.css");
 
 body {
     background: #fff;
@@ -17,11 +15,28 @@ div.view {
     display: none;
 }
 
-#upload {
+#input-view {
     display: block;
-    padding-top: 10%;
+    padding-top: 5%;
 }
 
-#loading {
+#input-view .or {
+    margin: 24px 0;
+}
+
+#input-view .url-input-container {
+    margin-bottom: 12px;
+}
+
+#input-view p.url-input-error {
+    visibility: hidden;
+}
+
+#select-color-view {
     padding-top: 5%;
+    display: block;
+}
+
+#loading-view {
+    padding-top: 10%;
 }
