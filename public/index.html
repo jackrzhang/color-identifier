@@ -34,25 +34,25 @@
     <h1 class="title">Color Identifier</h1>
 
     <div id="input-view" class="view">
-        <div class="pure-button input-button">
+        <button  class="input-button">
             <span>Select an image</span>
             <i class="fa fa-picture-o"></i>
             <input type="file" accept="image/*" onchange="loadImageFile()" id="image-input">
-        </div>
+        </button>
         <p class="or">OR</p>
         <div class="url-input-container">
             <input type="text" placeholder="ENTER AN IMAGE URL" id="url-input">
         </div>
-        <div class="pure-button input-button" id="load-image">
+        <button class="input-button" id="load-image">
             <span>OK</span>
-        </div>
+        </button>
         <div>
             <p class="url-input-error">Please enter a valid image url.</p>
         </div>
     </div>
 
     <div id="select-color-view" class="view">
-        <img id="selected-image" src="http://www.asdf.com/89asdf.gif" alt="selected image"/>
+        <canvas id="select-color-canvas"/>
     </div>
 
     <div id="loading-view" class="view">

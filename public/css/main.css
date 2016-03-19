@@ -1,6 +1,7 @@
 @import url("typography.css");
 @import url("loader.css");
 @import url("input-fields.css");
+@import url("selected-image.css");
 
 body {
     background: #fff;
@@ -12,11 +13,10 @@ h1.title {
 
 div.view {
     text-align: center;
-    display: none;
+    display: block;
 }
 
 #input-view {
-    display: block;
     padding-top: 5%;
 }
 
@@ -34,7 +34,7 @@ div.view {
 
 #select-color-view {
     padding-top: 5%;
-    display: block;
+    display: block;    
 }
 
 #loading-view {

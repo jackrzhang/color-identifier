@@ -26,4 +26,4 @@ IMPLEMENTATION DETAILS:
 1) Simple, step-by-step UI
 2) Desktop only design, as browsers do not support mobile uploads
 3) Utilize Pure.css grids
-4) HTML5
+4) HTML5 Canvas
