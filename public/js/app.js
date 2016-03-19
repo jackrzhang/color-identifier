@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-    // Event handlers
+    // Event listeners
     loadImageUrl();
 });
 
@@ -76,4 +76,7 @@ function drawImageScaled(imageObj, context) {
     context.clearRect(0,0,canvas.width, canvas.height);
     context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, 
         0, 0, imageObj.width * imageToCanvasRatio, imageObj.height * imageToCanvasRatio);
+
+    // Match canvas wrapper dimensions for color-selector-cursor interface
+    $("#canvas-wrapper").css('height', canvas.height);
 }

@@ -21,9 +21,10 @@ USER INTERFACE FLOW:
     a) Restart the UI flow
     b) Select another color from the uploaded image.
 
-
 IMPLEMENTATION DETAILS:
 1) Simple, step-by-step UI
 2) Desktop only design, as browsers do not support mobile uploads
-3) Utilize Pure.css grids
-4) HTML5 Canvas
+3) Pure.css
+4) JavaScript FileReader
+5) HTML5 Canvas
+6) JQuery UI Draggable

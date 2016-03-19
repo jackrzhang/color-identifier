@@ -52,8 +52,12 @@
     </div>
 
     <div id="select-color-view" class="view">
-        <!-- Set canvas minimum width and height, see drawImageScaled -->
-        <canvas id="select-color-canvas" width="400px"/>
+        <div id="canvas-wrapper">
+            <canvas id="select-color-canvas" width="400px"/></canvas>
+            <img id="select-color-cursor" src="images/color-selector-cursor.png">
+        </div>
+
+        <div class="selected-color-display"></div>
     </div>
 
     <div id="loading-view" class="view">
@@ -73,8 +77,9 @@
         </div>
     </div>
 
-    <!-- jQuery -->
+    <!-- jQuery, jQuery UI -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <!-- Application Javascript -->
     <script src="js/app.js?v=~|VERSION|~"></script>
