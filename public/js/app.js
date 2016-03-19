@@ -15,13 +15,13 @@ function loadImageUrl() {
         imageObj.src = $("#url-input").val();
 
         // Load valid image urls, continue to select color view
-        imageObj.onload = function(){
-            context.drawImage(imageObj,0,0);
+        imageObj.onload = function() {
+            drawImageScaled(imageObj, context);
             console.log("Valid image url. Continue to selector view");
         };
 
         // Display error message for invalid image urls
-        imageObj.onerror = function(){
+        imageObj.onerror = function() {
             if ($("#url-input").val() !== '') {
                 $('p.url-input-error').css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1}, 'slow');
                 console.log("Invalid image url.");
@@ -49,7 +49,8 @@ function loadImageFile() {
         reader.addEventListener("load", 
             function () {
                 imageObj.src = reader.result;
-                context.drawImage(imageObj,0,0);
+                drawImageScaled(imageObj, context);
+                console.log("Successful image file read. Continue to selector view");
             },
         false);
 
@@ -59,4 +60,20 @@ function loadImageFile() {
     } else {
         console.log('Javascript File API not supported.');
     }
+}
+
+// Fits and centers input image to canvas
+function drawImageScaled(imageObj, context) {
+    // Get canvas
+    var canvas = context.canvas;
+
+    // Adjust canvas height (fixed canvas width), based on the image
+    var imageRatio = imageObj.height / imageObj.width;
+    canvas.height = canvas.width * imageRatio;
+
+    // Draw and scale image to canvas dimensions
+    var imageToCanvasRatio = canvas.width / imageObj.width;
+    context.clearRect(0,0,canvas.width, canvas.height);
+    context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, 
+        0, 0, imageObj.width * imageToCanvasRatio, imageObj.height * imageToCanvasRatio);
 }

@@ -1,7 +1,7 @@
 @import url("typography.css");
 @import url("loader.css");
 @import url("input-fields.css");
-@import url("selected-image.css");
+@import url("select-color-canvas.css");
 
 body {
     background: #fff;
