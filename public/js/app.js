@@ -2,7 +2,22 @@
 $(document).ready(function() {
     // Event listeners
     loadImageUrl();
+    selectColorUI();
 });
+
+function selectColorUI() {
+    // JQuery UI - make cursor draggable 
+    $('#select-color-cursor').draggable();
+
+    // Change cursor as user drags the color selector cursor
+    $('#select-color-cursor').on('mousedown', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).addClass('dragging');
+    }).on('mouseup', function () {
+        $(this).removeClass('dragging');
+    });
+}
 
 function loadImageUrl() {
     $("#load-image").on('click', function() {

@@ -18,5 +18,11 @@
     left: 50%;
     width: 15px;
     height: auto;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
 }
 
+#select-color-view #canvas-wrapper #select-color-cursor.dragging {
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
