@@ -19,6 +19,18 @@ function selectColorUI() {
     }).on('mouseup', function () {
         $(this).removeClass('dragging');
     });
+
+    $('#select-color-cursor').on('drag', function(e) {
+        var position = $('#select-color-cursor').position();
+        console.log(position.left + ' ' + position.top);
+
+        var canvas = document.querySelector('#select-color-canvas');
+        var context = canvas.getContext('2d');
+        var color = context.getImageData(position.left, position.top, 1, 1).data;
+        console.log(color[0] + ', ' + color[1] + ', ' + color[2]);
+        $('#selected-color-display').css('background-color', 
+            'rgba(' + color[0] + ', ' + color[1] + ', ' + color[2] + ')');
+    });
 }
 
 function loadImageUrl() {
@@ -29,6 +41,7 @@ function loadImageUrl() {
 
         // Instantiate JS image object, assign input url
         var imageObj = new Image;
+        imageObj.crossOrigin = "Anonymous";
         imageObj.src = $("#url-input").val();
 
         // Load valid image urls, continue to select color view

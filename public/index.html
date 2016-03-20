@@ -47,19 +47,24 @@
             <span>OK</span>
         </button>
         <div>
-            <p class="url-input-error">Please enter a valid image url.</p>
+            <p class="url-input-error">Image url invalid or inaccessible.</p>
         </div>
     </div>
 
     <div id="select-color-view" class="view">
+        <p id="canvas-label">SELECTED IMAGE:</p>
         <div id="canvas-wrapper">
-            <canvas id="select-color-canvas" width="400px"/></canvas>
+            <canvas id="select-color-canvas" width="550px" height="200px"/></canvas>
             <div id="select-color-cursor">
                 <div id="select-color-cursor-center"></div>
             </div>
         </div>
 
-        <div class="selected-color-display"></div>
+        <p id="selected-color-display-label">SELECTED COLOR:</p>
+        <div id="selected-color-display"></div>
+        <button class="input-button" id="continue">
+            <span>IDENTIFY</span>
+        </button>
     </div>
 
     <div id="loading-view" class="view">

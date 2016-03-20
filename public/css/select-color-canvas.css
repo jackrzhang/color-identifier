@@ -1,14 +1,16 @@
 #select-color-view #canvas-wrapper {
     position: relative;
     margin: 0 auto;
-    width: 400px;
+    width: 550px;
+    height: 200px;
 }
 
 #select-color-view #canvas-wrapper #select-color-canvas {
     position: absolute;
-    top: -10px;
-    left: -10px;
-    border: 10px solid #bdc3c7;
+    top: -2px;
+    left: -2px;
+    border: 2px solid #bdc3c7;
+    border-radius: 10px;
     z-index: -1;
 }
 
@@ -25,6 +27,11 @@
     cursor: -webkit-grab;
 }
 
+#select-color-view #canvas-label {
+    margin-top: 50px ;
+    margin-bottom: 12px;
+}
+
 #select-color-view #canvas-wrapper #select-color-cursor-center {
     width: 2px;
     height: 2px;
@@ -36,4 +43,17 @@
 #select-color-view #canvas-wrapper #select-color-cursor.dragging {
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
+}
+
+#select-color-view #selected-color-display-label {
+    margin-top: 50px ;
+    margin-bottom: 10px;
+}
+
+#select-color-view #selected-color-display {
+    margin: 0 auto 12px;
+    border: 2px solid #bdc3c7;
+    border-radius: 10px;
+    height: 100px;
+    width: 200px;
 }
