@@ -16,10 +16,21 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 15px;
-    height: auto;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin: -10px;
+    box-shadow: rgba(0,0,0,0.5) 0 0 0 1px,inset rgba(255,255,255,0.5) 0 0 0 1px;
     cursor: -moz-grab;
     cursor: -webkit-grab;
+}
+
+#select-color-view #canvas-wrapper #select-color-cursor-center {
+    width: 2px;
+    height: 2px;
+    margin: 11px;
+    border-radius: 50%;
+    box-shadow: rgba(0,0,0,0.7) 0 0 0 1px,inset rgba(255,255,255,0.7) 0 0 0 1px;
 }
 
 #select-color-view #canvas-wrapper #select-color-cursor.dragging {
