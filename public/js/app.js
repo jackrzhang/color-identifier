@@ -7,7 +7,9 @@ $(document).ready(function() {
 
 function selectColorUI() {
     // JQuery UI - make cursor draggable 
-    $('#select-color-cursor').draggable();
+    $('#select-color-cursor').draggable({
+        containment: 'parent'
+    });
 
     // Change cursor as user drags/drops the color selector cursor
     $('#select-color-cursor').on('mousedown', function(e) {
