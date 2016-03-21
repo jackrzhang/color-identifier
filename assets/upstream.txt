@@ -12,8 +12,10 @@ USER INTERFACE FLOW:
     a) Visual display of color is shown
 3) User submits, and color information appears. 
     a) Information displayed includes:
+        - RGB
         - Hex
-        - RGB-HSV
+        - HSV
+        - HSL
         - CYMK
         - PMS
         - Copic

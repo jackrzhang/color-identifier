@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // Instantiate selected color variables & information variables
     var r, g, b;
-    var hexInfo, rgbInfo, hsvInfo, hslInfo, cmykInfo, pmsInfo, copicInfo;
+    var rgbInfo, hexInfo, hsvInfo, hslInfo, cmykInfo, pmsInfo, copicInfo;
 
     // Event listeners
     loadImageUrl();
@@ -57,16 +57,18 @@ function prepareColorInfo() {
         'rgba(' + rTint + ',' + gTint + ',' + bTint + ')');
 
     // Determine identified color information values
-    hexInfo = rgbToHex(r, g, b);
     rgbInfo = r + ', ' + g + ', ' + b;
+    hexInfo = rgbToHex(r, g, b);
     hsvInfo = rgbToHsv(r, g, b);
     hslInfo = rgbToHsl(r, g, b);
+    cmykInfo = rgbToCmyk(r, g, b);
 
     // Update display with values
-    $('#hex-color-info').html(hexInfo);
     $('#rgb-color-info').html(rgbInfo);
+    $('#hex-color-info').html(hexInfo);
     $('#hsv-color-info').html(hsvInfo);
     $('#hsl-color-info').html(hslInfo);
+    $('#cmyk-color-info').html(cmykInfo);
 }
 
 function rgbToHex(r, g, b) {
@@ -115,7 +117,7 @@ function rgbToHsl(r, g, b){
 
     if(max == min){
         h = s = 0; // achromatic
-    }else{
+    } else{
         var d = max - min;
         s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
         switch(max){
@@ -126,11 +128,38 @@ function rgbToHsl(r, g, b){
         h /= 6;
     }
 
-    // Round and convert from 0-1 to degrees and percents
+    // Round and convert from 0-1 to degrees and percentages
     h = Math.round(h * 360);
     s = Math.round(s * 100);
     l = Math.round(l * 100);
     return h + '&deg, ' + s + '%, ' + l + '%';
+}
+
+function rgbToCmyk(r, g, b) {
+    var rRatio = r/255;
+    var gRatio = g/255
+    var bRatio = b/255;
+    var max = Math.max(rRatio, gRatio, bRatio), min = Math.min(rRatio, gRatio, bRatio);
+    var c, m, y, k;
+
+    // Establish k (achromatic) value
+    k = 1 - max;
+
+    if(max == min) {
+        c = m = y = 0; // achromatic
+    } else {
+        c = (1 - rRatio - k) / (1 - k);
+        m = (1 - gRatio - k) / (1 - k);
+        y = (1 - bRatio - k) / (1 - k);
+    }
+
+    // Round and convert to percentages
+    c = Math.round(c * 100);
+    m = Math.round(m * 100);
+    y = Math.round(y * 100);
+    k = Math.round(k * 100);
+    return c + '%, ' + m + '%, ' + y + ',% ' + k + '%';
+
 }
 
 function loadImageUrl() {
