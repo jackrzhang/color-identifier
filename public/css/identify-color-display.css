@@ -1,0 +1,40 @@
+#identify-color-view #identified-color-display {
+    position: relative;
+    margin: 0 auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 300px;
+    height: 170px;
+}
+
+#identify-color-view #identified-color-display #identified-color-tint {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-top-right-radius: 10px;
+    width: 40px;
+    height: 170px;
+    z-index: 1;
+}   
+
+#identify-color-view #identified-color-info {
+    margin: 0 auto;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 300px;
+    padding: 8px 0;
+    background-color: #fff;
+}
+
+#identify-color-view #identified-color-info p {
+    margin: 10px 0;
+}
+
+#identify-color-view #identified-color-info span.trademark-symbol {
+    font-size: 10px;
+    vertical-align: text-top;
+}
+
+#identify-color-view #identified-color-info span.color-info {
+    margin-left: 5px;
+}

@@ -2,22 +2,24 @@
 @import url("loader.css");
 @import url("input-fields.css");
 @import url("select-color-canvas.css");
+@import url("identify-color-display.css");
 
 body {
-    background: #fff;
+    background: rgb(234, 234, 234);
 }
 
 h1.title {
     padding-top: 5%;
 }
 
+h2.subtitle {
+    
+}
+
 div.view {
     text-align: center;
     display: block;
-}
-
-#input-view {
-    padding-top: 5%;
+    padding: 5% 0;
 }
 
 #input-view .or {
@@ -33,7 +35,10 @@ div.view {
 }
 
 #select-color-view {
-    padding-top: 5%;
+    display: block;    
+}
+
+#identify-color-view {
     display: block;    
 }
 

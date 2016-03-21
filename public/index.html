@@ -31,7 +31,8 @@
 </head>
     
 <body>
-    <h1 class="title">Color Identifier</h1>
+    <h1 class="title">color identifier</h1>
+    <h2 class="title">a service by jackrzhang</h2>
 
     <div id="input-view" class="view">
         <button  class="input-button">
@@ -54,7 +55,7 @@
     <div id="select-color-view" class="view">
         <p id="canvas-label">SELECTED IMAGE:</p>
         <div id="canvas-wrapper">
-            <canvas id="select-color-canvas" width="550px" height="200px"/></canvas>
+            <canvas id="select-color-canvas" width="475px" height="200px"/></canvas>
             <div id="select-color-cursor">
                 <div id="select-color-cursor-center"></div>
             </div>
@@ -65,6 +66,34 @@
         <button class="input-button" id="continue">
             <span>IDENTIFY</span>
         </button>
+    </div>
+
+    <div id="identify-color-view" class="view">
+        <div id="identified-color-display">
+            <div id="identified-color-tint"></div>
+        </div>
+        <div id="identified-color-info">
+            <p>HEX:
+                <span class="color-info" id="hex-color-info"></span>
+            </p>
+            <p>RGB:
+                <span class="color-info" id="rgb-color-info"></span>
+            </p>
+            <p>HSB:
+                <span class="color-info" id="hsb-color-info"></span>
+            </p>
+            <p>CMYK:
+                <span class="color-info" id="cmyk-color-info"></span>
+            </p>
+            <p>PMS
+                <span class="trademark-symbol">&reg</span>:
+                <span class="color-info" id="pms-color-info"></span>
+            </p>
+            <p>COPIC
+                <span class="trademark-symbol">&reg</span>:
+                <span class="color-info" id="copic-color-info"></span>
+            </p>
+        </div>
     </div>
 
     <div id="loading-view" class="view">

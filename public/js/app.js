@@ -1,5 +1,8 @@
-
 $(document).ready(function() {
+    // Instantiate selected color variables & information variables
+    var r, g, b;
+    var rgbInfo;
+
     // Event listeners
     loadImageUrl();
     selectColorUI();
@@ -21,16 +24,41 @@ function selectColorUI() {
     });
 
     $('#select-color-cursor').on('drag', function(e) {
+        // Determine position of the select-color-cursor
         var position = $('#select-color-cursor').position();
         console.log(position.left + ' ' + position.top);
 
+        // Utilize HTML5 to get rgb values from the canvas 
         var canvas = document.querySelector('#select-color-canvas');
         var context = canvas.getContext('2d');
         var color = context.getImageData(position.left, position.top, 1, 1).data;
-        console.log(color[0] + ', ' + color[1] + ', ' + color[2]);
-        $('#selected-color-display').css('background-color', 
-            'rgba(' + color[0] + ', ' + color[1] + ', ' + color[2] + ')');
+        r = color[0], g = color[1], b = color[2];
+        console.log(r + ',' + g + ',' + b);
+
+        updateViews();
     });
+}
+
+function updateViews() {
+    // Update displays using the currently selected color
+    $('#selected-color-display').css('background-color', 
+        'rgba(' + r + ',' + g + ',' + b + ')');
+    $('#identified-color-display').css('background-color', 
+        'rgba(' + r + ',' + g + ',' + b + ')');
+
+    // Calculate and apply tint for identified-color-tint div
+    var rTint = Math.round(r + (255 - r) / 5);
+    var gTint = Math.round(g + (255 - g) / 5);
+    var bTint = Math.round(b + (255 - b) / 5);
+    console.log(rTint + ',' + gTint + ',' + bTint);
+    $('#identified-color-tint').css('background-color', 
+        'rgba(' + rTint + ',' + gTint + ',' + bTint + ')');
+
+    // Determine identified color information values
+    var rgbInfo = r + ', ' + g + ', ' + b;
+
+    // Update display with values
+    $('#rgb-color-info').html(rgbInfo);
 }
 
 function loadImageUrl() {

@@ -1,7 +1,7 @@
 #select-color-view #canvas-wrapper {
     position: relative;
     margin: 0 auto;
-    width: 550px;
+    width: 475px;
     height: 200px;
 }
 
@@ -52,7 +52,6 @@
 
 #select-color-view #selected-color-display {
     margin: 0 auto 12px;
-    border: 2px solid #bdc3c7;
     border-radius: 10px;
     height: 100px;
     width: 200px;
