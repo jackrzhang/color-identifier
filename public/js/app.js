@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // Instantiate selected color variables & information variables
     var r, g, b;
-    var hexInfo, rgbInfo, hsvInfo, cmykInfo, pmsInfo, copicInfo;
+    var hexInfo, rgbInfo, hsvInfo, hslInfo, cmykInfo, pmsInfo, copicInfo;
 
     // Event listeners
     loadImageUrl();
@@ -60,11 +60,13 @@ function prepareColorInfo() {
     hexInfo = rgbToHex(r, g, b);
     rgbInfo = r + ', ' + g + ', ' + b;
     hsvInfo = rgbToHsv(r, g, b);
+    hslInfo = rgbToHsl(r, g, b);
 
     // Update display with values
     $('#hex-color-info').html(hexInfo);
     $('#rgb-color-info').html(rgbInfo);
     $('#hsv-color-info').html(hsvInfo);
+    $('#hsl-color-info').html(hslInfo);
 }
 
 function rgbToHex(r, g, b) {
@@ -102,6 +104,33 @@ function rgbToHsv(r, g, b){
     s = Math.round(s * 100);
     v = Math.round(v * 100);
     return h + '&deg, ' + s + '%, ' + v + '%';
+}
+
+function rgbToHsl(r, g, b){
+    var rRatio = r/255;
+    var gRatio = g/255
+    var bRatio = b/255;
+    var max = Math.max(rRatio, gRatio, bRatio), min = Math.min(rRatio, gRatio, bRatio);
+    var h, s, l = (max + min) / 2;
+
+    if(max == min){
+        h = s = 0; // achromatic
+    }else{
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch(max){
+            case rRatio: h = (gRatio - bRatio) / d + (gRatio < bRatio ? 6 : 0); break;
+            case gRatio: h = (bRatio - rRatio) / d + 2; break;
+            case bRatio: h = (rRatio - gRatio) / d + 4; break;
+        }
+        h /= 6;
+    }
+
+    // Round and convert from 0-1 to degrees and percents
+    h = Math.round(h * 360);
+    s = Math.round(s * 100);
+    l = Math.round(l * 100);
+    return h + '&deg, ' + s + '%, ' + l + '%';
 }
 
 function loadImageUrl() {
