@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // Instantiate selected color variables & information variables
     var r, g, b;
-    var rgbInfo, hexInfo, hsvInfo, hslInfo, cmykInfo, pmsInfo, copicInfo;
+    var rgbInfo, hexInfo, hsvInfo, hslInfo, cmykInfo, xyzInfo, copicInfo;
 
     // Event listeners
     loadImageUrl();
@@ -49,9 +49,9 @@ function prepareColorInfo() {
         'rgba(' + r + ',' + g + ',' + b + ')');
 
     // Calculate and apply tint for identified-color-tint div
-    var rTint = Math.round(r + (255 - r) / 5);
-    var gTint = Math.round(g + (255 - g) / 5);
-    var bTint = Math.round(b + (255 - b) / 5);
+    var rTint = Math.round(r + (255 - r) / 6);
+    var gTint = Math.round(g + (255 - g) / 6);
+    var bTint = Math.round(b + (255 - b) / 6);
     console.log(rTint + ',' + gTint + ',' + bTint);
     $('#identified-color-tint').css('background-color', 
         'rgba(' + rTint + ',' + gTint + ',' + bTint + ')');
@@ -62,6 +62,7 @@ function prepareColorInfo() {
     hsvInfo = rgbToHsv(r, g, b);
     hslInfo = rgbToHsl(r, g, b);
     cmykInfo = rgbToCmyk(r, g, b);
+    xyzInfo = rgbToXyz(r, g, b);
 
     // Update display with values
     $('#rgb-color-info').html(rgbInfo);
@@ -69,6 +70,7 @@ function prepareColorInfo() {
     $('#hsv-color-info').html(hsvInfo);
     $('#hsl-color-info').html(hslInfo);
     $('#cmyk-color-info').html(cmykInfo);
+    $('#xyz-color-info').html(xyzInfo);
 }
 
 function rgbToHex(r, g, b) {
@@ -161,6 +163,40 @@ function rgbToCmyk(r, g, b) {
     return c + '%, ' + m + '%, ' + y + ',% ' + k + '%';
 
 }
+
+function rgbToXyz(r, g, b)
+{
+    var rRatio = r/255;
+    var gRatio = g/255
+    var bRatio = b/255;
+
+    if ( rRatio > 0.04045 ) 
+        rRatio = Math.pow(((rRatio + 0.055) / 1.055), 2.4);
+    else                   
+        rRatio = rRatio / 12.92;
+
+    if ( gRatio > 0.04045 ) 
+        gRatio = Math.pow(((gRatio + 0.055) / 1.055), 2.4);
+    else                   
+        gRatio = gRatio / 12.92;
+
+    if ( bRatio > 0.04045 ) 
+        bRatio = Math.pow(((bRatio + 0.055) / 1.055 ), 2.4);
+    else                   
+        bRatio = bRatio / 12.92;
+
+    // Observer. = 2°, Illuminant = D65
+    var x = rRatio * 0.4124 + gRatio * 0.3576 + bRatio * 0.1805;
+    var y = rRatio * 0.2126 + gRatio * 0.7152 + bRatio * 0.0722;
+    var z = rRatio * 0.0193 + gRatio * 0.1192 + bRatio * 0.9505;
+
+    // Round and convert to percentages
+    x = Math.round(x * 100);
+    y = Math.round(y * 100);
+    z = Math.round(z * 100);
+    return x + '%, ' + y + '%, ' + z + '%';
+}
+
 
 function loadImageUrl() {
     $("#load-image").on('click', function() {
