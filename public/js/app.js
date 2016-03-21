@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // Instantiate selected color variables & information variables
     var r, g, b;
-    var hexInfo, rgbInfo, hsbInfo, cmykInfo, pmsInfo, copicInfo;
+    var hexInfo, rgbInfo, hsvInfo, cmykInfo, pmsInfo, copicInfo;
 
     // Event listeners
     loadImageUrl();
@@ -35,14 +35,16 @@ function selectColorUI() {
         r = color[0], g = color[1], b = color[2];
         console.log(r + ',' + g + ',' + b);
 
-        updateViews();
+        // Update selected-color-display div
+        $('#selected-color-display').css('background-color', 
+        'rgba(' + r + ',' + g + ',' + b + ')');
+
+        prepareColorInfo();
     });
 }
 
-function updateViews() {
-    // Update displays using the currently selected color
-    $('#selected-color-display').css('background-color', 
-        'rgba(' + r + ',' + g + ',' + b + ')');
+function prepareColorInfo() {
+    // Apply the currently selected color to the display
     $('#identified-color-display').css('background-color', 
         'rgba(' + r + ',' + g + ',' + b + ')');
 
@@ -57,19 +59,46 @@ function updateViews() {
     // Determine identified color information values
     hexInfo = rgbToHex(r, g, b);
     rgbInfo = r + ', ' + g + ', ' + b;
+    hsvInfo = rgbToHsv(r, g, b);
 
     // Update display with values
     $('#hex-color-info').html(hexInfo);
     $('#rgb-color-info').html(rgbInfo);
+    $('#hsv-color-info').html(hsvInfo);
 }
 
 function rgbToHex(r, g, b) {
     if (r > 255 || g > 255 || b > 255)
         throw "Invalid color component";
     var hexUnformatted = ((r << 16) | (g << 8) | b).toString(16);
-    var hexFormatted = '#' + ('000000' + hexUnformatted).slice(-6);
 
+    var hexFormatted = '#' + ('000000' + hexUnformatted).slice(-6);
     return hexFormatted;
+}
+
+function rgbToHsv (r, g, b) {
+    var h = 0;
+    var s = 0;
+    var v = 0;
+
+    var rRatio = r/255; gRatio = g/255; bRatio = b/255;
+    var minRgb = Math.min(r, Math.min(g, b));
+    var maxRgb = Math.max(r, Math.max(g, b));
+
+    // grayscale colors
+    if ( minRgb == maxRgb ) {
+        v = minRgb;
+    } else { 
+        // Non-grayscale colors
+        var d = (rRatio == minRgb) ? gRatio-b : ((bRatio == minRgb) ? rRatio-gRatio : bRatio-rRatio);
+        var h = (rRatio == minRgb) ? 3 : ((bRatio == minRgb) ? 1 : 5);
+        h = 60 * (h - d / (maxRgb - minRgb));
+        s = (maxRgb - minRgb) / maxRgb;
+        v = maxRgb;
+    }
+
+    h = Math.round(h), s = Math.round(s), v = Math.round(v);
+    return h + '&deg, ' + s + '%, ' + v + '%';
 }
 
 function loadImageUrl() {
