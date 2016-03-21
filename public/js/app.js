@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // Instantiate selected color variables & information variables
     var r, g, b;
-    var rgbInfo;
+    var hexInfo, rgbInfo, hsbInfo, cmykInfo, pmsInfo, copicInfo;
 
     // Event listeners
     loadImageUrl();
@@ -55,10 +55,21 @@ function updateViews() {
         'rgba(' + rTint + ',' + gTint + ',' + bTint + ')');
 
     // Determine identified color information values
-    var rgbInfo = r + ', ' + g + ', ' + b;
+    hexInfo = rgbToHex(r, g, b);
+    rgbInfo = r + ', ' + g + ', ' + b;
 
     // Update display with values
+    $('#hex-color-info').html(hexInfo);
     $('#rgb-color-info').html(rgbInfo);
+}
+
+function rgbToHex(r, g, b) {
+    if (r > 255 || g > 255 || b > 255)
+        throw "Invalid color component";
+    var hexUnformatted = ((r << 16) | (g << 8) | b).toString(16);
+    var hexFormatted = '#' + ('000000' + hexUnformatted).slice(-6);
+
+    return hexFormatted;
 }
 
 function loadImageUrl() {
