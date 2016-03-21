@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // Instantiate selected color variables & information variables
     var r, g, b;
-    var rgbInfo, hexInfo, hsvInfo, hslInfo, cmykInfo, xyzInfo, copicInfo;
+    var rgbInfo, hexInfo, hsvInfo, hslInfo, hwbInfo, cmykInfo, xyzInfo;
 
     // Event listeners
     loadImageUrl();
@@ -61,6 +61,7 @@ function prepareColorInfo() {
     hexInfo = rgbToHex(r, g, b);
     hsvInfo = rgbToHsv(r, g, b);
     hslInfo = rgbToHsl(r, g, b);
+    hwbInfo = rgbToHwb(r, g, b);
     cmykInfo = rgbToCmyk(r, g, b);
     xyzInfo = rgbToXyz(r, g, b);
 
@@ -69,6 +70,7 @@ function prepareColorInfo() {
     $('#hex-color-info').html(hexInfo);
     $('#hsv-color-info').html(hsvInfo);
     $('#hsl-color-info').html(hslInfo);
+    $('#hwb-color-info').html(hwbInfo);
     $('#cmyk-color-info').html(cmykInfo);
     $('#xyz-color-info').html(xyzInfo);
 }
@@ -119,7 +121,7 @@ function rgbToHsl(r, g, b){
 
     if(max == min){
         h = s = 0; // achromatic
-    } else{
+    } else {
         var d = max - min;
         s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
         switch(max){
@@ -135,6 +137,31 @@ function rgbToHsl(r, g, b){
     s = Math.round(s * 100);
     l = Math.round(l * 100);
     return h + '&deg, ' + s + '%, ' + l + '%';
+}
+
+function rgbToHwb(r, g, b) {
+    var rRatio = r/255;
+    var gRatio = g/255
+    var bRatio = b/255;
+    var min = Math.min(rRatio, gRatio, bRatio), max = Math.max(rRatio, gRatio, bRatio);
+    
+    // Establish blackness
+    var bk = 1 - max;
+
+    if(max == min){
+        h = w = 0; // achromatic
+    } else {
+        var f = rRatio === min ? gRatio - bRatio : (gRatio === min ? bRatio - rRatio : rRatio - gRatio);
+        var i = rRatio === min ? 3 : (gRatio === min ? 5 : 1);
+        var h = (i - f / (max - min)) / 6
+        var w = min;
+    }
+
+    // Round and convert from 0-1 to degrees and percentages
+    h = Math.round(h * 360);
+    w = Math.round(w * 100);
+    bk = Math.round(bk * 100);
+    return h + '&deg, ' + w + '%, ' + bk + '%';
 }
 
 function rgbToCmyk(r, g, b) {
@@ -196,7 +223,6 @@ function rgbToXyz(r, g, b)
     z = Math.round(z * 100);
     return x + '%, ' + y + '%, ' + z + '%';
 }
-
 
 function loadImageUrl() {
     $("#load-image").on('click', function() {
