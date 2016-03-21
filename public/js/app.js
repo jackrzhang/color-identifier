@@ -76,28 +76,31 @@ function rgbToHex(r, g, b) {
     return hexFormatted;
 }
 
-function rgbToHsv (r, g, b) {
-    var h = 0;
-    var s = 0;
-    var v = 0;
+function rgbToHsv(r, g, b){
+    var rRatio = r/255;
+    var gRatio = g/255
+    var bRatio = b/255;
+    var max = Math.max(rRatio, gRatio, bRatio), min = Math.min(rRatio, gRatio, bRatio);
+    var h, s, v = max;
 
-    var rRatio = r/255; gRatio = g/255; bRatio = b/255;
-    var minRgb = Math.min(r, Math.min(g, b));
-    var maxRgb = Math.max(r, Math.max(g, b));
+    var d = max - min;
+    s = max == 0 ? 0 : d / max;
 
-    // grayscale colors
-    if ( minRgb == maxRgb ) {
-        v = minRgb;
-    } else { 
-        // Non-grayscale colors
-        var d = (rRatio == minRgb) ? gRatio-b : ((bRatio == minRgb) ? rRatio-gRatio : bRatio-rRatio);
-        var h = (rRatio == minRgb) ? 3 : ((bRatio == minRgb) ? 1 : 5);
-        h = 60 * (h - d / (maxRgb - minRgb));
-        s = (maxRgb - minRgb) / maxRgb;
-        v = maxRgb;
+    if(max == min){
+        h = 0; // achromatic
+    }else{
+        switch(max){
+            case rRatio: h = (gRatio - bRatio) / d + (gRatio < bRatio ? 6 : 0); break;
+            case gRatio: h = (bRatio - rRatio) / d + 2; break;
+            case bRatio: h = (rRatio - gRatio) / d + 4; break;
+        }
+        h /= 6;
     }
 
-    h = Math.round(h), s = Math.round(s), v = Math.round(v);
+    // Round and convert from 0-1 to degrees and percents
+    h = Math.round(h * 360);
+    s = Math.round(s * 100);
+    v = Math.round(v * 100);
     return h + '&deg, ' + s + '%, ' + v + '%';
 }
 
