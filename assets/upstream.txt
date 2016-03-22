@@ -27,6 +27,5 @@ IMPLEMENTATION DETAILS:
 1) Simple, step-by-step UI
 2) Desktop only design, as browsers do not support mobile uploads
 3) Pure.css
-4) JavaScript FileReader
 5) HTML5 Canvas
-6) JQuery UI Draggable
+6) JQuery UI - Draggable

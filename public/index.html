@@ -35,13 +35,15 @@
     <h2 class="subtitle">a service by jackrzhang</h2>
 
     <div id="input-view" class="view">
-        <button class="input-button">
-            <span>Select an image</span>
-            <i class="fa fa-picture-o"></i>
+        <div class="file-input-wrapper">
             <input type="file" accept="image/*" id="image-input">
-        </button>
+            <button class="input-button file-input">
+                <span>Select an image</span>
+                <i class="fa fa-picture-o"></i>
+            </button>
+        </div>
         <p class="or">OR</p>
-        <div class="url-input-container">
+        <div class="url-input-container url-input">
             <input type="text" placeholder="ENTER AN IMAGE URL" id="url-input">
         </div>
         <button class="input-button" id="load-image">
@@ -60,7 +62,6 @@
                 <div id="select-color-cursor-center"></div>
             </div>
         </div>
-
         <p id="selected-color-display-label">SELECTED COLOR:</p>
         <div id="selected-color-display"></div>
         <button class="input-button" id="forward-to-identify-color">
@@ -122,7 +123,11 @@
     <script src="js/jquery.ui.touch-punch.min.js"></script>   
 
     <!-- Application Javascript -->
-    <script src="js/app.js?v=~|VERSION|~"></script>
+    <script src="js/load-image.js?v=~|VERSION|~"></script>
+    <script src="js/select-color.js?v=~|VERSION|~"></script>
+    <script src="js/color-info.js?v=~|VERSION|~"></script>
+    <script src="js/route-views.js?v=~|VERSION|~"></script>
+    <script src="js/domready.js?v=~|VERSION|~"></script>
 </body>
 
 </html>
