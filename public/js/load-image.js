@@ -1,5 +1,6 @@
 function loadImageUrl() {
-    $("#load-image").on('click', function() {
+
+    function loadImageUrlActions() {
         // Set up canvas
         var canvas = document.querySelector('#select-color-canvas');
         var context = canvas.getContext('2d');
@@ -12,8 +13,6 @@ function loadImageUrl() {
         // Load valid image urls, continue to select color view
         imageObj.onload = function() {
             drawImageScaled(imageObj, context);
-
-            // Update display to select-color-view
             updateSelectedColor();
             changeView('input-view', 'select-color-view');
             console.log("Valid image url. Continue to selector view");
@@ -26,6 +25,19 @@ function loadImageUrl() {
                 console.log("Invalid image url.");
             }
         };
+    }
+
+    // image url loaded through clicking the 'OK' button
+    $("#load-image").on('click', function() {
+        loadImageUrlActions();
+    });
+
+    // image url loaded through pressing the 'enter' key
+    $("#url-input").keypress(function(e) {
+        if (e.which == 13) {
+            e.preventDefault();
+            loadImageUrlActions();
+        }
     });
 }
 
