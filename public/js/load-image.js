@@ -1,5 +1,4 @@
 function loadImageUrl() {
-
     function loadImageUrlActions() {
         // Set up canvas
         var canvas = document.querySelector('#select-color-canvas');
@@ -75,5 +74,6 @@ function drawImageScaled(imageObj, context) {
         0, 0, imageObj.width * imageToCanvasRatio, imageObj.height * imageToCanvasRatio);
 
     // Match canvas wrapper dimensions for color-selector-cursor interface
+    $("#canvas-wrapper").css('width', canvas.width);
     $("#canvas-wrapper").css('height', canvas.height);
 }

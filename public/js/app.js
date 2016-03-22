@@ -9,4 +9,14 @@ $(document).ready(function() {
     loadImageUrl();
     selectColorUI();
     routeViews();
+
+    resizeCanvasForMobile();
 });
+
+// Adjust canvas width for extra small screen widths less than 445px
+function resizeCanvasForMobile() {
+    if ( $(window).width() < 445 ) {
+        var canvas = document.querySelector('#select-color-canvas');
+        canvas.width = $(window).width() * 95/100;
+    }
+}
