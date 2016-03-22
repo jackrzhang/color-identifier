@@ -26,9 +26,11 @@ p {
 }
 
 a { 
-    text-decoration: underline; 
+    color: #4a4467;
+    text-decoration: none; 
+    transition: all .25s ease-in-out;
 }
 
 a:hover { 
-    text-decoration: underline; 
+    color: #AA95D1;
 }
