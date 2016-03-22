@@ -1,21 +1,33 @@
 @import url("typography.css");
 @import url("loader.css");
 @import url("input-fields.css");
-@import url("select-color-canvas.css");
-@import url("identify-color-display.css");
+@import url("select-color-view.css");
+@import url("identify-color-view.css");
 
 body {
     background: rgb(234, 234, 234);
 }
 
 h1.title {
-    padding-top: 5%;
+    padding-top: 45px;
 }
 
 div.view {
+    display: none;
     text-align: center;
-    display: block;
-    padding: 5% 0;
+    padding: 40px 0;
+}
+
+div.view .go-back-button {
+    margin: 25px 0;
+    font-size: 35px;
+    color: #4a4467;
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+}
+
+div.view .go-back-button:hover {
+    color: #252233;
 }
 
 #input-view .or {
@@ -31,13 +43,9 @@ div.view {
 }
 
 #select-color-view {
-    display: block;    
-}
-
-#identify-color-view {
-    display: block;    
+    padding-top: 10px;
 }
 
 #loading-view {
-    padding-top: 10%;
+    padding-top: 100px;
 }

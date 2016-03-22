@@ -6,7 +6,35 @@ $(document).ready(function() {
     // Event listeners
     loadImageUrl();
     selectColorUI();
+    routeViews();
 });
+
+// Event handlers for moving between all views except for input-view->select-color-view
+function routeViews() {
+    // Start application with loading view to input view
+    $('#loading-view').fadeIn(400, function() {
+        changeView('loading-view', 'input-view');
+    });
+
+    $("#forward-to-identify-color").on('click', function() {
+        prepareColorInfo();
+        changeView('select-color-view', 'identify-color-view');
+    });
+
+    $("#back-to-select-color").on('click', function() {
+        changeView('identify-color-view', 'select-color-view');
+    });
+
+    $("#back-to-input").on('click', function() {
+        changeView('select-color-view', 'input-view');
+    });
+}
+
+function changeView(currentView, upcomingView) {
+    $('#' + currentView).fadeOut(500, function() {
+        $('#' + upcomingView).fadeIn(500);
+    });
+}
 
 function selectColorUI() {
     // JQuery UI - make cursor draggable 
@@ -24,23 +52,25 @@ function selectColorUI() {
     });
 
     $('#select-color-cursor').on('drag', function(e) {
-        // Determine position of the select-color-cursor
-        var position = $('#select-color-cursor').position();
-        console.log(position.left + ' ' + position.top);
-
-        // Utilize HTML5 to get rgb values from the canvas 
-        var canvas = document.querySelector('#select-color-canvas');
-        var context = canvas.getContext('2d');
-        var color = context.getImageData(position.left, position.top, 1, 1).data;
-        r = color[0], g = color[1], b = color[2];
-        console.log(r + ',' + g + ',' + b);
-
-        // Update selected-color-display div
-        $('#selected-color-display').css('background-color', 
-        'rgba(' + r + ',' + g + ',' + b + ')');
-
-        prepareColorInfo();
+        updateSelectedColor();
     });
+}
+
+function updateSelectedColor() {
+    // Determine position of the select-color-cursor
+    var position = $('#select-color-cursor').position();
+    console.log(position.left + ' ' + position.top);
+
+    // Utilize HTML5 to get rgb values from the canvas 
+    var canvas = document.querySelector('#select-color-canvas');
+    var context = canvas.getContext('2d');
+    var color = context.getImageData(position.left, position.top, 1, 1).data;
+    r = color[0], g = color[1], b = color[2];
+    console.log(r + ',' + g + ',' + b);
+
+    // Update selected-color-display div
+    $('#selected-color-display').css('background-color', 
+    'rgba(' + r + ',' + g + ',' + b + ')');
 }
 
 function prepareColorInfo() {
@@ -238,6 +268,10 @@ function loadImageUrl() {
         // Load valid image urls, continue to select color view
         imageObj.onload = function() {
             drawImageScaled(imageObj, context);
+
+            // Update display to select-color-view
+            updateSelectedColor();
+            changeView('input-view', 'select-color-view');
             console.log("Valid image url. Continue to selector view");
         };
 
@@ -271,6 +305,10 @@ function loadImageFile() {
             function () {
                 imageObj.src = reader.result;
                 drawImageScaled(imageObj, context);
+                
+                // Update display to select-color-view
+                updateSelectedColor();
+                changeView('input-view', 'select-color-view');
                 console.log("Successful image file read. Continue to selector view");
             },
         false);

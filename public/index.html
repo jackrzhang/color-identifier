@@ -32,10 +32,10 @@
     
 <body>
     <h1 class="title">color identifier</h1>
-    <h2 class="title">a service by jackrzhang</h2>
+    <h2 class="subtitle">a service by jackrzhang</h2>
 
     <div id="input-view" class="view">
-        <button  class="input-button">
+        <button class="input-button">
             <span>Select an image</span>
             <i class="fa fa-picture-o"></i>
             <input type="file" accept="image/*" onchange="loadImageFile()" id="image-input">
@@ -55,7 +55,7 @@
     <div id="select-color-view" class="view">
         <p id="canvas-label">SELECTED IMAGE:</p>
         <div id="canvas-wrapper">
-            <canvas id="select-color-canvas" width="475px" height="200px"/></canvas>
+            <canvas id="select-color-canvas" width="420px" height="200px"/></canvas>
             <div id="select-color-cursor">
                 <div id="select-color-cursor-center"></div>
             </div>
@@ -63,9 +63,10 @@
 
         <p id="selected-color-display-label">SELECTED COLOR:</p>
         <div id="selected-color-display"></div>
-        <button class="input-button" id="continue">
+        <button class="input-button" id="forward-to-identify-color">
             <span>IDENTIFY</span>
         </button>
+        <div><i id="back-to-input" class="go-back-button fa fa-long-arrow-left"></i></div>
     </div>
 
     <div id="identify-color-view" class="view">
@@ -95,6 +96,7 @@
                 <span class="color-info" id="xyz-color-info"></span>
             </p>
         </div>
+        <div><i id="back-to-select-color" class="go-back-button fa fa-long-arrow-left"></i></div>
     </div>
 
     <div id="loading-view" class="view">
@@ -116,6 +118,7 @@
 
     <!-- jQuery, jQuery UI -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <!-- Application Javascript -->
