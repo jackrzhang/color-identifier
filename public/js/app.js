@@ -4,6 +4,8 @@ $(document).ready(function() {
     var rgbInfo, hexInfo, hsvInfo, hslInfo, hwbInfo, cmykInfo, xyzInfo;
 
     // Event listeners
+    var input = document.getElementById('image-input');
+    input.addEventListener('change', loadImageFile);
     loadImageUrl();
     selectColorUI();
     routeViews();
@@ -286,39 +288,20 @@ function loadImageUrl() {
 }
 
 // Function triggered by #image-input file input element
-function loadImageFile() {
-    // FileReader support
-    if (FileReader) {
-        // Set up canvas
-        var canvas = document.querySelector('#select-color-canvas');
-        var context = canvas.getContext('2d');
+function loadImageFile(e) {
+    // Set up canvas
+    var canvas = document.querySelector('#select-color-canvas');
+    var context = canvas.getContext('2d');
 
-        // Set up file reader
-        var file = document.querySelector('#image-input').files[0];
-        var reader = new FileReader();
+    // Instantiate JS image object
+    var imageObj = new Image;
+    imageObj.src = URL.createObjectURL(e.target.files[0]);
 
-        // Instantiate JS image object
-        var imageObj = new Image;
-
-        // Load file src into imageObj, draw imageObj onto canvas
-        reader.addEventListener("load", 
-            function () {
-                imageObj.src = reader.result;
-                drawImageScaled(imageObj, context);
-                
-                // Update display to select-color-view
-                updateSelectedColor();
-                changeView('input-view', 'select-color-view');
-                console.log("Successful image file read. Continue to selector view");
-            },
-        false);
-
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    } else {
-        console.log('Javascript File API not supported.');
-    }
+    // Load image src into imageObj, draw imageObj onto canvas
+    imageObj.onload = function() {
+        drawImageScaled(imageObj, context);
+        changeView('input-view', 'select-color-view');
+    };
 }
 
 // Fits and centers input image to canvas
