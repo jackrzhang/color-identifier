@@ -15,6 +15,10 @@ function routeViews() {
     });
 
     $("#back-to-input").on('click', function() {
+        // Reset input view
+        $("#url-input").val('');
+        $('p.url-input-error').css('visibility', 'hidden');
+
         changeView('select-color-view', 'input-view');
     });
 }
