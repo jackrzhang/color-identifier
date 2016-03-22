@@ -3,7 +3,7 @@ Date: 160304
 Author: jackrzhang
 
 PROBLEM DEFINITION:
-1) Identify a color within any digital picture. 
+1) Identify individual colors within any digital image. 
 
 USER INTERFACE FLOW:
 1) User is prompted to select a picture, either through file input or URL.
@@ -16,9 +16,9 @@ USER INTERFACE FLOW:
         - Hex
         - HSV
         - HSL
+        - HWB
         - CYMK
-        - PMS
-        - Copic
+        - XYZ
 4) User has final options available to:
     a) Restart the UI flow
     b) Select another color from the uploaded image.
