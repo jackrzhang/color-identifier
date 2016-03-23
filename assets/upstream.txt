@@ -6,11 +6,11 @@ PROBLEM DEFINITION:
 1) Identify individual colors within any digital image. 
 
 USER INTERFACE FLOW:
-1) User is prompted to select a picture, either through file input or URL.
+1) User is prompted to select a image, either through file input or URL.
     a) Display message instead if HTML5 is not supported.
-2) Picture is loaded in, and user moves a marker on the picture to the select a color.
+2. Image is loaded in, and user moves a marker on the image to the select a color.
     a) Visual display of color is shown
-3) User submits, and color information appears. 
+3. Identifying information for the selected color is provided:
     a) Information displayed includes:
         - RGB
         - Hex
@@ -19,13 +19,12 @@ USER INTERFACE FLOW:
         - HWB
         - CYMK
         - XYZ
-4) User has final options available to:
+4. User has options available to:
     a) Restart the UI flow
     b) Select another color from the uploaded image.
 
 IMPLEMENTATION DETAILS:
-1) Simple, step-by-step UI
-2) Desktop only design, as browsers do not support mobile uploads
-3) Pure.css
-5) HTML5 Canvas
-6) JQuery UI - Draggable
+1) UI divided into step-by-step views
+2) Pure.css foundation
+3) HTML5 Canvas
+4) JQuery UI - Draggable
