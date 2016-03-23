@@ -21,7 +21,7 @@ USER INTERFACE FLOW:
         - XYZ
 4. User has options available to:
     a) Restart the UI flow
-    b) Select another color from the uploaded image.
+    b) Select another color from the loaded image.
 
 IMPLEMENTATION DETAILS:
 1) UI divided into step-by-step views
