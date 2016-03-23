@@ -16,7 +16,8 @@ Thanks to HTML5, Color Identifier is completely client-side. Try it out [here](h
   * CYMK
   * XYZ
 4. User has options available to:
-  1. Restart the UI flow.
+  * Restart the UI flow.
+  * Select another color from the loaded image.
 
 ####tools
 1. HTML5 Canvas
